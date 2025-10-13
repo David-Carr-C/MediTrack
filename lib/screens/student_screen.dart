@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart' as fluent;
 import 'package:flutter/material.dart';
+import 'package:medi_track/services/graphql.dart';
 
 class StudentScreen extends StatefulWidget {
   const StudentScreen({super.key});
@@ -78,8 +79,39 @@ class _StudentScreenState extends State<StudentScreen> {
                       children: [
                         fluent.Button(
                           child: const Text('Editar Perfil'),
-                          onPressed: () {
+                          onPressed: () async {
                             // Acción editar perfil
+                            // String graphqlQuery = '''
+                            // {
+                            //   testCollection {
+                            //     edges {
+                            //       node {
+                            //         id
+                            //         test
+                            //         nuevo
+                            //         modificar
+                            //       }
+                            //     }
+                            //   }
+                            // }
+                            // ''';
+
+                            // var response = await GraphQLService.query(
+                            //   graphqlQuery,
+                            // );
+
+                            // if (response[1].containsKey('message')) {
+                            //   // ! Error
+                            //   SnackBar(
+                            //     content: fluent.Text(
+                            //       response[1]['message'] ?? 'Error desconocido',
+                            //     ),
+                            //     backgroundColor: fluent.Colors.red,
+                            //   );
+                            // }
+
+                            // // ! Exito
+                            // print(response);
                           },
                         ),
                         const SizedBox(width: 12),
