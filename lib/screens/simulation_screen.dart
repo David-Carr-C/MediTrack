@@ -2,8 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:fluent_ui/fluent_ui.dart' as fluent;
 import 'package:flutter/material.dart';
-
-enum SimulationType { femurCut, hipCut, kneeCut }
+import 'package:medi_track/models/simulation.dart';
 
 class SimulationScreen extends fluent.StatefulWidget {
   const SimulationScreen({super.key});
@@ -38,13 +37,6 @@ class _SimulationScreenState extends fluent.State<SimulationScreen> {
         '/home/david-carrillo/Documentos/.BUAP/build/Innerbuild/Examples/RenderingColon/Example-RenderingColon',
     SimulationType.kneeCut:
         '/home/david-carrillo/Documentos/.BUAP/build/Innerbuild/Examples/PBD/PBDTissueVolumeNeedleContact/Example-PBDTissueVolumeNeedleContact',
-  };
-
-  // Nombres amigables para mostrar
-  final Map<SimulationType, String> simulationNames = {
-    SimulationType.femurCut: 'Corte de Fémur',
-    SimulationType.hipCut: 'Renderizado de Colon',
-    SimulationType.kneeCut: 'Contacto Aguja con Tejido',
   };
 
   void _startSimulation(SimulationType type) async {

@@ -1,23 +1,36 @@
 import 'package:fluent_ui/fluent_ui.dart' as fluent;
 import 'package:flutter/material.dart';
-import 'package:medi_track/services/graphql.dart';
+import 'package:medi_track/models/student.dart';
+import 'package:medi_track/services/mock_data.dart';
 
 class StudentScreen extends StatefulWidget {
-  const StudentScreen({super.key});
+  const StudentScreen({
+    super.key,
+    required this.matricula,
+    required this.onLogout,
+  });
+
+  /// Matrícula del alumno con sesión activa.
+  final String matricula;
+
+  /// Cierra la sesión y regresa al selector de rol.
+  final VoidCallback onLogout;
 
   @override
   State<StudentScreen> createState() => _StudentScreenState();
 }
 
 class _StudentScreenState extends State<StudentScreen> {
-  final String matricula = '202084414';
-  final String nombre = 'Irvin';
-  final String apellidoPaterno = 'Gómez';
-  final String apellidoMaterno = 'López';
-  final String fechaNacimiento = '15/03/2003';
-  final String carrera = 'Ingeniería en Sistemas';
-  final String semestre = '6° Semestre';
-  final String email = 'jake.gomez@alumno.buap.mx';
+  late final Student _student = MockData.studentByMatricula(widget.matricula);
+
+  String get matricula => _student.matricula;
+  String get nombre => _student.nombre;
+  String get apellidoPaterno => _student.apellidoPaterno;
+  String get apellidoMaterno => _student.apellidoMaterno;
+  String get fechaNacimiento => _student.fechaNacimiento;
+  String get carrera => _student.carrera;
+  String get semestre => _student.semestre;
+  String get email => _student.email;
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +131,7 @@ class _StudentScreenState extends State<StudentScreen> {
                         fluent.Button(
                           style: fluent.ButtonStyle(),
                           child: const Text('Cerrar Sesión'),
-                          onPressed: () {},
+                          onPressed: widget.onLogout,
                         ),
                       ],
                     ),
