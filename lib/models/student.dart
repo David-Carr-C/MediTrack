@@ -12,7 +12,7 @@ class Student {
   final String email;
   final List<SimulationProgress> avances;
 
-  const Student({
+  Student({
     required this.matricula,
     required this.nombre,
     required this.apellidoPaterno,
@@ -21,10 +21,14 @@ class Student {
     required this.carrera,
     required this.semestre,
     required this.email,
-    this.avances = const [],
-  });
+    List<SimulationProgress>? avances,
+  }) : avances = avances ?? [];
 
-  String get nombreCompleto => '$nombre $apellidoPaterno $apellidoMaterno';
+  String get nombreCompleto => [
+    nombre,
+    apellidoPaterno,
+    apellidoMaterno,
+  ].where((s) => s.trim().isNotEmpty).join(' ');
 
   /// Porcentaje de avance promedio sobre todas las simulaciones registradas.
   double get avancePromedio {

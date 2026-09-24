@@ -1,8 +1,17 @@
 import 'package:medi_track/models/simulation.dart';
 import 'package:medi_track/models/student.dart';
+import 'package:medi_track/models/teacher.dart';
 
 /// Datos de ejemplo (mock) usados mientras no hay backend.
 class MockData {
+  /// Perfil del profesor con sesión activa. Editable desde Ajustes.
+  static Teacher teacherProfile = const Teacher(
+    id: 'profesor',
+    nombre: 'Dr. Profesor',
+    correo: 'profesor@buap.mx',
+    area: 'Ingeniería Biomédica',
+  );
+
   /// Lista de alumnos con su avance en simulaciones.
   static final List<Student> students = [
     Student(
@@ -108,6 +117,44 @@ class MockData {
     return students.firstWhere(
       (s) => s.matricula == matricula,
       orElse: () => students.first,
+    );
+  }
+
+  /// Registra el avance de [student] en la simulación [type]. Si ya existía
+  /// un registro para esa simulación se actualiza (conservando comentarios
+  /// y capturas previas y sin retroceder el porcentaje ya alcanzado);
+  /// si no existía, se crea uno nuevo.
+  static void recordProgress(
+    Student student,
+    SimulationType type,
+    double percent,
+  ) {
+    final avances = student.avances;
+    final index = avances.indexWhere((a) => a.type == type);
+    final clamped = percent.clamp(0.0, 100.0);
+    final now = DateTime.now();
+
+    if (index == -1) {
+      avances.add(
+        SimulationProgress(
+          type: type,
+          percent: clamped,
+          completed: clamped >= 100,
+          date: now,
+        ),
+      );
+      return;
+    }
+
+    final previo = avances[index];
+    final nuevoPercent = clamped > previo.percent ? clamped : previo.percent;
+    avances[index] = SimulationProgress(
+      type: type,
+      percent: nuevoPercent,
+      completed: previo.completed || nuevoPercent >= 100,
+      date: now,
+      screenshots: previo.screenshots,
+      comments: previo.comments,
     );
   }
 }

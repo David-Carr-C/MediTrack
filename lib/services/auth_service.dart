@@ -46,7 +46,7 @@ class AuthService {
   static const Map<String, _MockCredential> _teachers = {
     'profesor': _MockCredential(
       password: 'profesor123',
-      userId: 'profesor',
+      userId: 'Profesor',
       displayName: 'Dr. Profesor',
     ),
   };

@@ -87,54 +87,54 @@ class _StudentScreenState extends State<StudentScreen> {
                     ),
                     const SizedBox(height: 20),
                     // Botones de acción
-                    fluent.Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        fluent.Button(
-                          child: const Text('Editar Perfil'),
-                          onPressed: () async {
-                            // Acción editar perfil
-                            // String graphqlQuery = '''
-                            // {
-                            //   testCollection {
-                            //     edges {
-                            //       node {
-                            //         id
-                            //         test
-                            //         nuevo
-                            //         modificar
-                            //       }
-                            //     }
-                            //   }
-                            // }
-                            // ''';
-
-                            // var response = await GraphQLService.query(
-                            //   graphqlQuery,
-                            // );
-
-                            // if (response[1].containsKey('message')) {
-                            //   // ! Error
-                            //   SnackBar(
-                            //     content: fluent.Text(
-                            //       response[1]['message'] ?? 'Error desconocido',
-                            //     ),
-                            //     backgroundColor: fluent.Colors.red,
-                            //   );
-                            // }
-
-                            // // ! Exito
-                            // print(response);
-                          },
-                        ),
-                        const SizedBox(width: 12),
-                        fluent.Button(
-                          style: fluent.ButtonStyle(),
-                          child: const Text('Cerrar Sesión'),
-                          onPressed: widget.onLogout,
-                        ),
-                      ],
-                    ),
+                    //fluent.Row(
+                    //  mainAxisAlignment: MainAxisAlignment.end,
+                    //  children: [
+                    //    fluent.Button(
+                    //      child: const Text('Editar Perfil'),
+                    //      onPressed: () async {
+                    //        // Acción editar perfil
+                    //        // String graphqlQuery = '''
+                    //        // {
+                    //        //   testCollection {
+                    //        //     edges {
+                    //        //       node {
+                    //        //         id
+                    //        //         test
+                    //        //         nuevo
+                    //        //         modificar
+                    //        //       }
+                    //        //     }
+                    //        //   }
+                    //        // }
+                    //        // ''';
+                    //
+                    //        // var response = await GraphQLService.query(
+                    //        //   graphqlQuery,
+                    //        // );
+                    //
+                    //        // if (response[1].containsKey('message')) {
+                    //        //   // ! Error
+                    //        //   SnackBar(
+                    //        //     content: fluent.Text(
+                    //        //       response[1]['message'] ?? 'Error desconocido',
+                    //        //     ),
+                    //        //     backgroundColor: fluent.Colors.red,
+                    //        //   );
+                    //        // }
+                    //
+                    //        // // ! Exito
+                    //        // print(response);
+                    //      },
+                    //    ),
+                    //    const SizedBox(width: 12),
+                    //    fluent.Button(
+                    //      style: fluent.ButtonStyle(),
+                    //      child: const Text('Cerrar Sesión'),
+                    //      onPressed: widget.onLogout,
+                    //    ),
+                    //  ],
+                    //),
                   ],
                 ),
               ),

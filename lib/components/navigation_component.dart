@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart' as fluent;
 import 'package:flutter/material.dart';
 import 'package:medi_track/models/user_role.dart';
+import 'package:medi_track/screens/settings_techer_screen.dart';
 import 'package:medi_track/screens/simulation_screen.dart';
 import 'package:medi_track/screens/student_screen.dart';
 import 'package:medi_track/screens/teacher_screen.dart';
@@ -50,7 +51,11 @@ class _NavigationComponentState extends State<NavigationComponent> {
           title: const Text('Alumnos'),
           body: const TeacherScreen(),
         ),
-        _settingsPane,
+        fluent.PaneItem(
+          icon: const Icon(fluent.FluentIcons.settings),
+          title: const Text('Ajustes'),
+          body: const SettingsTecherScreen(),
+        ),
       ];
     }
 
